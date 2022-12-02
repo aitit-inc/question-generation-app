@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Input Form</title>
+
+</head>
+
+<body>
+    <h2>Input Form</h2>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    <form action="{{ url_for('input_complete') }}" method="POST" novalidate="novalidate">
+        <table>
+            <tr>
+                <td>Context</td>
+                <td>
+                    <input type="text" name="context" value="{{ context }}" placeholder="context" />
+                </td>
+            </tr>
+            <tr>
+                <td>Answer</td>
+                <td>
+                    <input type="text" name="answer" value="{{ answer }}" placeholder="answer" />
+                </td>
+            </tr>
+        </table>
+        <input type="submit" value="submit" />
+    </form>
+</body>
+
+</html>
